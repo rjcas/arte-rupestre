@@ -1,0 +1,324 @@
+:root {
+  --piedra-900: #2b2622;
+  --piedra-800: #3d362f;
+  --piedra-700: #55493d;
+  --piedra-200: #e7ddce;
+  --piedra-100: #f2ece1;
+  --piedra-50: #faf7f2;
+  --ocre: #b5651d;
+  --ocre-dark: #8f4e14;
+  --ocre-light: #e0a15a;
+  --carbon: #1c1a18;
+  --verde-musgo: #5c6b4f;
+  --linea: #d8cdb9;
+  --rojo-error: #a3372a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  background: var(--piedra-50);
+  color: var(--carbon);
+  font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+a {
+  color: inherit;
+}
+
+h1,
+h2,
+h3 {
+  font-family: 'IBM Plex Serif', Georgia, serif;
+  letter-spacing: -0.01em;
+  margin: 0 0 0.4em 0;
+  color: var(--piedra-900);
+}
+
+button {
+  font-family: inherit;
+}
+
+.shell {
+  min-height: 100vh;
+  display: flex;
+}
+
+.sidebar {
+  width: 240px;
+  background: var(--piedra-900);
+  color: var(--piedra-100);
+  padding: 28px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.sidebar .marca {
+  font-family: 'IBM Plex Serif', serif;
+  font-size: 1.2rem;
+  color: var(--ocre-light);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  padding-bottom: 16px;
+}
+
+.sidebar .marca small {
+  display: block;
+  font-family: inherit;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--piedra-200);
+  margin-top: 6px;
+}
+
+.sidebar nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.sidebar nav a {
+  text-decoration: none;
+  color: var(--piedra-200);
+  padding: 9px 10px;
+  border-radius: 6px;
+  font-size: 0.92rem;
+}
+
+.sidebar nav a:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.sidebar .usuario {
+  margin-top: auto;
+  font-size: 0.82rem;
+  color: var(--piedra-200);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  padding-top: 14px;
+}
+
+.sidebar .usuario button {
+  margin-top: 8px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: var(--piedra-100);
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.78rem;
+}
+
+.sidebar .usuario button:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.contenido {
+  flex: 1;
+  padding: 36px 44px;
+  max-width: 1100px;
+}
+
+.encabezado-pagina {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 28px;
+  gap: 20px;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.72rem;
+  color: var(--ocre-dark);
+  font-weight: 600;
+  margin-bottom: 4px;
+  display: block;
+}
+
+.btn {
+  display: inline-block;
+  background: var(--ocre);
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.15s ease;
+}
+
+.btn:hover {
+  background: var(--ocre-dark);
+}
+
+.btn.secundario {
+  background: transparent;
+  color: var(--piedra-800);
+  border: 1px solid var(--linea);
+}
+
+.btn.secundario:hover {
+  background: var(--piedra-100);
+}
+
+.tarjeta {
+  background: white;
+  border: 1px solid var(--linea);
+  border-radius: 10px;
+  padding: 24px 26px;
+  margin-bottom: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--linea);
+}
+
+th {
+  color: var(--piedra-700);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+tr:hover td {
+  background: var(--piedra-50);
+}
+
+.fila-tabla {
+  text-decoration: none;
+  color: inherit;
+}
+
+form .campo {
+  margin-bottom: 16px;
+}
+
+form label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--piedra-700);
+  margin-bottom: 5px;
+}
+
+form input[type='text'],
+form input[type='number'],
+form input[type='date'],
+form input[type='password'],
+form select,
+form textarea {
+  width: 100%;
+  padding: 9px 11px;
+  border: 1px solid var(--linea);
+  border-radius: 6px;
+  font-size: 0.92rem;
+  background: white;
+  font-family: inherit;
+}
+
+form input:focus,
+form select:focus,
+form textarea:focus {
+  outline: 2px solid var(--ocre-light);
+  outline-offset: 1px;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 20px;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0 20px;
+}
+
+.pestañas {
+  display: flex;
+  gap: 4px;
+  border-bottom: 1px solid var(--linea);
+  margin-bottom: 22px;
+}
+
+.pestañas a {
+  padding: 10px 16px;
+  text-decoration: none;
+  color: var(--piedra-700);
+  font-size: 0.88rem;
+  border-bottom: 2px solid transparent;
+}
+
+.pestañas a.activa {
+  color: var(--ocre-dark);
+  border-bottom-color: var(--ocre);
+  font-weight: 600;
+}
+
+.calculado {
+  display: inline-block;
+  background: var(--piedra-100);
+  color: var(--piedra-700);
+  padding: 2px 9px;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  margin-left: 8px;
+}
+
+.error {
+  background: #fbe9e6;
+  color: var(--rojo-error);
+  padding: 10px 14px;
+  border-radius: 6px;
+  font-size: 0.88rem;
+  margin-bottom: 16px;
+}
+
+.vacio {
+  color: var(--piedra-700);
+  font-size: 0.9rem;
+  padding: 30px 0;
+  text-align: center;
+}
+
+.login-shell {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(160deg, var(--piedra-900), var(--carbon));
+}
+
+.login-tarjeta {
+  background: var(--piedra-50);
+  padding: 40px 38px;
+  border-radius: 12px;
+  width: 360px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+}
+
+.login-tarjeta h1 {
+  font-size: 1.4rem;
+}
+
+.login-tarjeta .eyebrow {
+  margin-bottom: 10px;
+}
