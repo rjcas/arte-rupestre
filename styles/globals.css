@@ -299,6 +299,101 @@ form textarea:focus {
   text-align: center;
 }
 
+.buscador {
+  position: relative;
+  max-width: 340px;
+  margin-bottom: 22px;
+}
+
+.buscador input {
+  width: 100%;
+  padding: 10px 14px 10px 36px;
+  border: 1px solid var(--linea);
+  border-radius: 8px;
+  font-size: 0.9rem;
+  background: white;
+  font-family: inherit;
+}
+
+.buscador input:focus {
+  outline: 2px solid var(--ocre-light);
+  outline-offset: 1px;
+}
+
+.buscador svg {
+  position: absolute;
+  left: 11px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--piedra-700);
+  pointer-events: none;
+}
+
+.grid-lugares {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 14px;
+}
+
+.card-lugar {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  background: white;
+  border: 1px solid var(--linea);
+  border-left: 3px solid var(--piedra-200);
+  border-radius: 8px;
+  padding: 16px 18px;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.card-lugar:hover {
+  border-left-color: var(--ocre);
+  box-shadow: 0 6px 16px rgba(43, 38, 34, 0.08);
+  transform: translateY(-1px);
+}
+
+.card-lugar-cabecera {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.card-lugar-sigla {
+  font-family: 'IBM Plex Serif', serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ocre-dark);
+  font-weight: 600;
+}
+
+.card-lugar-motivos {
+  background: var(--piedra-100);
+  color: var(--piedra-800);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+.card-lugar-titulo {
+  font-family: 'IBM Plex Serif', serif;
+  font-size: 1.08rem;
+  font-weight: 600;
+  color: var(--piedra-900);
+  margin-bottom: 4px;
+  line-height: 1.25;
+}
+
+.card-lugar-meta {
+  font-size: 0.82rem;
+  color: var(--piedra-700);
+}
+
 .login-shell {
   min-height: 100vh;
   display: flex;
