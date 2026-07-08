@@ -67,6 +67,13 @@ export default function DetalleMotivo({ user, motivo: motivoInicial }) {
 
       <PestañasMotivo motivoId={motivo.id} />
 
+      {motivo.notas_legado && (
+        <div className="tarjeta" style={{ background: 'var(--piedra-100)', fontSize: '0.85rem', color: 'var(--piedra-700)' }}>
+          <strong>Dato importado del sistema anterior: </strong>
+          {motivo.notas_legado}
+        </div>
+      )}
+
       <div className="tarjeta">
         <form onSubmit={onSubmit}>
           {error && <div className="error">{error}</div>}

@@ -18,6 +18,7 @@ export default function Layout({ user, children }) {
         </div>
         <nav>
           <Link href="/">Lugares</Link>
+          {user?.rol === 'admin' && <Link href="/admin/usuarios">Editores</Link>}
         </nav>
         {user && (
           <div className="usuario">

@@ -44,9 +44,9 @@ async function main() {
   const username = (await ask(rl, 'Usuario (para iniciar sesión): ')).trim();
   const nombre = (await ask(rl, 'Nombre completo (opcional): ')).trim();
   const password = await ask(rl, 'Contraseña: ', { hidden: true });
-  rl.close();
 
   if (!username || !password) {
+    rl.close();
     console.error('Usuario y contraseña son obligatorios.');
     process.exit(1);
   }
@@ -57,14 +57,27 @@ async function main() {
     ssl: esLocal ? false : { rejectUnauthorized: false },
   });
 
+  const countResult = await pool.query('SELECT count(*) FROM usuarios');
+  const esElPrimero = Number(countResult.rows[0].count) === 0;
+
+  let rol = 'editor';
+  if (esElPrimero) {
+    console.log('No hay usuarios todavía: este será el administrador del sistema.');
+    rol = 'admin';
+  } else {
+    const respuesta = (await ask(rl, '¿Es administrador? (s/N): ')).trim().toLowerCase();
+    rol = respuesta === 's' || respuesta === 'si' || respuesta === 'sí' ? 'admin' : 'editor';
+  }
+  rl.close();
+
   const hash = await bcrypt.hash(password, 10);
   try {
     await pool.query(
-      `INSERT INTO usuarios (username, password_hash, nombre) VALUES ($1, $2, $3)
-       ON CONFLICT (username) DO UPDATE SET password_hash = EXCLUDED.password_hash, nombre = EXCLUDED.nombre`,
-      [username, hash, nombre || null]
+      `INSERT INTO usuarios (username, password_hash, nombre, rol) VALUES ($1, $2, $3, $4)
+       ON CONFLICT (username) DO UPDATE SET password_hash = EXCLUDED.password_hash, nombre = EXCLUDED.nombre, rol = EXCLUDED.rol`,
+      [username, hash, nombre || null, rol]
     );
-    console.log(`Editor "${username}" creado/actualizado correctamente.`);
+    console.log(`Editor "${username}" (${rol}) creado/actualizado correctamente.`);
   } catch (err) {
     console.error('Error creando el usuario:', err.message);
   } finally {

@@ -9,6 +9,8 @@ CREATE TABLE IF NOT EXISTS usuarios (
   creado_en TIMESTAMP DEFAULT now()
 );
 
+ALTER TABLE usuarios ADD COLUMN IF NOT EXISTS rol TEXT NOT NULL DEFAULT 'editor' CHECK (rol IN ('admin','editor'));
+
 -- I. Lugar
 CREATE TABLE IF NOT EXISTS lugares (
   id SERIAL PRIMARY KEY,
@@ -26,6 +28,8 @@ CREATE TABLE IF NOT EXISTS lugares (
   creado_por INTEGER REFERENCES usuarios(id),
   creado_en TIMESTAMP DEFAULT now()
 );
+
+ALTER TABLE lugares ADD COLUMN IF NOT EXISTS legacy_id INTEGER UNIQUE;
 
 -- II. Motivos
 CREATE TABLE IF NOT EXISTS motivos (
@@ -123,3 +127,6 @@ CREATE TABLE IF NOT EXISTS conjunto_motivos (
 CREATE INDEX IF NOT EXISTS idx_motivos_lugar ON motivos(lugar_id);
 CREATE INDEX IF NOT EXISTS idx_operaciones_motivo ON operaciones_cognitivas(motivo_id);
 CREATE INDEX IF NOT EXISTS idx_conjunto_lugar ON conjunto_motivos(lugar_id);
+
+ALTER TABLE motivos ADD COLUMN IF NOT EXISTS legacy_id INTEGER UNIQUE;
+ALTER TABLE motivos ADD COLUMN IF NOT EXISTS notas_legado TEXT;

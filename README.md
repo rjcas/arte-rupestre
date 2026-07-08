@@ -89,12 +89,38 @@ mismo `.env.local` del paso 4 (apuntando a la base de Neon):
 npm run create-user
 ```
 
-Te va a pedir usuario, nombre y contraseña. Repetilo una vez por cada editor. También sirve
-para cambiar la contraseña de alguien: si volvés a poner el mismo usuario, la actualiza.
+Te va a pedir usuario, nombre y contraseña. El primer usuario que crees queda automáticamente
+como **administrador**; a partir del segundo, te pregunta si querés que sea administrador o
+editor común. También sirve para cambiar la contraseña o el rol de alguien existente: si
+volvés a poner el mismo usuario, lo actualiza.
+
+Una vez que tengas tu usuario administrador, también podés dar de alta y gestionar editores
+desde el navegador, en **"Editores"** (menú lateral, solo visible para administradores):
+crear cuentas, cambiar contraseñas, cambiar roles o eliminar editores. El sistema no deja
+eliminar tu propia cuenta ni quitar el rol del único administrador que quede.
 
 ---
 
-## 7. Uso del sistema
+## 7. Importar los datos del sistema anterior (opcional, una sola vez)
+
+Si tenés una planilla exportada del sistema viejo (una "consulta plana" con una fila por
+motivo, como `Consulta_plana_full.xlsx`), podés cargarla entera de una sola vez:
+
+```bash
+npm run import-legacy -- "/ruta/a/tu/archivo.xlsx"
+```
+
+Esto crea los lugares y motivos (con su técnica y, si corresponde, sus datos de
+antropomorfo) preservando el ID del sistema anterior para no duplicar nada si lo corrés
+de nuevo. Al final te muestra un resumen con cuántos registros se crearon.
+
+Los motivos importados muestran un cartel informativo en su ficha ("Dato importado del
+sistema anterior…") con información que no tiene un campo directo en el nuevo modelo
+(complejidad, capas adicionales de grabado, etc.), para que quede a mano como referencia.
+
+---
+
+## 8. Uso del sistema
 
 - Los editores entran a tu URL de Vercel y hacen login con las credenciales que les diste.
 - Desde **"Lugares"** crean un sitio (módulo I), y dentro de cada lugar cargan sus
@@ -114,8 +140,21 @@ npm install
 cp .env.example .env.local   # completá DATABASE_URL y JWT_SECRET
 npm run migrate               # crea las tablas si hace falta
 npm run create-user           # crea tu usuario de prueba
+npm run import-legacy -- "/ruta/al/excel.xlsx"  # opcional, datos históricos
 npm run dev                   # http://localhost:3000
 ```
+
+## Actualizar un despliegue ya existente
+
+Si ya habías desplegado una versión anterior y volvés a subir código nuevo (por ejemplo,
+esta versión con roles de usuario e importación de datos históricos), después de que Vercel
+termine de desplegar corré una vez más, desde tu computadora:
+
+```bash
+npm run migrate
+```
+
+Esto agrega las columnas nuevas sin borrar nada de lo que ya tenías cargado.
 
 ## Estructura del proyecto
 
@@ -128,6 +167,6 @@ scripts/             esquema SQL, migración, alta de editores
 
 ## Posibles próximos pasos
 
-- Panel web para administrar editores (hoy es por consola).
 - Exportar datos a Excel/CSV.
 - Subida de imágenes/calcos por motivo.
+- Búsqueda y filtros en el listado de lugares y motivos.
