@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-export default function PestañasMotivo({ motivoId }) {
+export default function TabsMotivo({ motivoId }) {
   const router = useRouter();
   const base = `/motivos/${motivoId}`;
   const tabs = [

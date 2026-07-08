@@ -4,7 +4,7 @@ import { requireUser } from '../../../lib/auth';
 import { query } from '../../../lib/db';
 import { calcularTamanio } from '../../../lib/calculos';
 import Layout from '../../../components/Layout';
-import PestañasMotivo from '../../../components/PestañasMotivo';
+import TabsMotivo from '../../../components/TabsMotivo';
 import catalogos from '../../../lib/catalogos';
 
 export async function getServerSideProps({ req, params }) {
@@ -65,7 +65,7 @@ export default function DetalleMotivo({ user, motivo: motivoInicial }) {
         </div>
       </div>
 
-      <PestañasMotivo motivoId={motivo.id} />
+      <TabsMotivo motivoId={motivo.id} />
 
       {motivo.notas_legado && (
         <div className="tarjeta" style={{ background: 'var(--piedra-100)', fontSize: '0.85rem', color: 'var(--piedra-700)' }}>

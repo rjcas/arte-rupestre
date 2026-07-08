@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { requireUser } from '../../../lib/auth';
 import { query } from '../../../lib/db';
 import Layout from '../../../components/Layout';
-import PestañasMotivo from '../../../components/PestañasMotivo';
+import TabsMotivo from '../../../components/TabsMotivo';
 
 export async function getServerSideProps({ req, params }) {
   const user = requireUser(req);
@@ -89,7 +89,7 @@ export default function ConjuntoMotivo({ user, motivo, integrantesIniciales, tod
         </div>
       </div>
 
-      <PestañasMotivo motivoId={motivo.id} />
+      <TabsMotivo motivoId={motivo.id} />
 
       <div className="tarjeta">
         <p style={{ color: 'var(--piedra-700)', fontSize: '0.9rem', marginTop: 0 }}>

@@ -4,7 +4,7 @@ import { requireUser } from '../../../lib/auth';
 import { query } from '../../../lib/db';
 import { calcularCromatismo } from '../../../lib/calculos';
 import Layout from '../../../components/Layout';
-import PestañasMotivo from '../../../components/PestañasMotivo';
+import TabsMotivo from '../../../components/TabsMotivo';
 import catalogos from '../../../lib/catalogos';
 
 export async function getServerSideProps({ req, params }) {
@@ -76,7 +76,7 @@ export default function TecnicaMotivo({ user, motivo, tecnicaInicial }) {
         </div>
       </div>
 
-      <PestañasMotivo motivoId={motivo.id} />
+      <TabsMotivo motivoId={motivo.id} />
 
       <div className="tarjeta">
         <form onSubmit={onSubmit}>

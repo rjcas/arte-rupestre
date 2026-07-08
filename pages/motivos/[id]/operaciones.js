@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { requireUser } from '../../../lib/auth';
 import { query } from '../../../lib/db';
 import Layout from '../../../components/Layout';
-import PestañasMotivo from '../../../components/PestañasMotivo';
+import TabsMotivo from '../../../components/TabsMotivo';
 
 export async function getServerSideProps({ req, params }) {
   const user = requireUser(req);
@@ -97,7 +97,7 @@ export default function OperacionesMotivo({ user, motivo, operacionesIniciales, 
         </div>
       </div>
 
-      <PestañasMotivo motivoId={motivo.id} />
+      <TabsMotivo motivoId={motivo.id} />
 
       <div className="tarjeta">
         {operaciones.length === 0 ? (
