@@ -16,6 +16,8 @@ export default function LugarForm({ inicial, lugarId }) {
       anios_campania: '',
       operadores: '',
       laboratorio: '',
+      latitud: '',
+      longitud: '',
     }
   );
   const [error, setError] = useState('');
@@ -115,6 +117,38 @@ export default function LugarForm({ inicial, lugarId }) {
           />
         </div>
       </div>
+
+      <fieldset style={{ border: '1px solid var(--linea)', borderRadius: 8, padding: 16, marginBottom: 20 }}>
+        <legend style={{ padding: '0 8px', fontWeight: 600 }}>Ubicación en el mapa (opcional)</legend>
+        <div className="grid-2">
+          <div className="campo">
+            <label>Latitud</label>
+            <input
+              type="number"
+              step="any"
+              placeholder="ej: -41.123456"
+              value={valores.latitud ?? ''}
+              onChange={(e) => set('latitud', e.target.value)}
+            />
+          </div>
+          <div className="campo">
+            <label>Longitud</label>
+            <input
+              type="number"
+              step="any"
+              placeholder="ej: -71.123456"
+              value={valores.longitud ?? ''}
+              onChange={(e) => set('longitud', e.target.value)}
+            />
+          </div>
+        </div>
+        <p style={{ fontSize: '0.8rem', color: 'var(--piedra-700)', margin: 0 }}>
+          Tip: en Google Maps, clic derecho sobre el punto exacto → clic en las coordenadas que
+          aparecen arriba para copiarlas, y pegalas acá separadas (el primer número es la
+          latitud, el segundo la longitud).
+        </p>
+      </fieldset>
+
       <button className="btn" type="submit" disabled={guardando}>
         {guardando ? 'Guardando…' : 'Guardar lugar'}
       </button>

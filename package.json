@@ -15,10 +15,12 @@
     "cookie": "^0.6.0",
     "dotenv": "^16.4.5",
     "jsonwebtoken": "^9.0.2",
+    "leaflet": "^1.9.4",
     "next": "14.2.35",
     "pg": "^8.11.5",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-leaflet": "^4.2.1",
     "xlsx": "^0.18.5"
   }
 }

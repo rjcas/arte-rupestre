@@ -25,12 +25,15 @@ export default async function handler(req, res) {
       anios_campania,
       operadores,
       laboratorio,
+      latitud,
+      longitud,
     } = req.body || {};
     try {
       const result = await query(
         `UPDATE lugares SET fecha=$1, pais=$2, provincia=$3, paraje=$4, sitio=$5, sector=$6,
-          conjunto_num=$7, sigla_sitio=$8, anios_campania=$9, operadores=$10, laboratorio=$11
-         WHERE id=$12 RETURNING *`,
+          conjunto_num=$7, sigla_sitio=$8, anios_campania=$9, operadores=$10, laboratorio=$11,
+          latitud=$12, longitud=$13
+         WHERE id=$14 RETURNING *`,
         [
           fecha || null,
           pais || null,
@@ -43,6 +46,8 @@ export default async function handler(req, res) {
           anios_campania || null,
           operadores || null,
           laboratorio || null,
+          latitud || null,
+          longitud || null,
           id,
         ]
       );

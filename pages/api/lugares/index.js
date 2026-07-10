@@ -18,6 +18,8 @@ export default async function handler(req, res) {
       anios_campania,
       operadores,
       laboratorio,
+      latitud,
+      longitud,
     } = req.body || {};
 
     if (!sitio) {
@@ -27,8 +29,8 @@ export default async function handler(req, res) {
     try {
       const result = await query(
         `INSERT INTO lugares
-          (fecha, pais, provincia, paraje, sitio, sector, conjunto_num, sigla_sitio, anios_campania, operadores, laboratorio, creado_por)
-         VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12)
+          (fecha, pais, provincia, paraje, sitio, sector, conjunto_num, sigla_sitio, anios_campania, operadores, laboratorio, latitud, longitud, creado_por)
+         VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14)
          RETURNING *`,
         [
           fecha || null,
@@ -42,6 +44,8 @@ export default async function handler(req, res) {
           anios_campania || null,
           operadores || null,
           laboratorio || null,
+          latitud || null,
+          longitud || null,
           user.sub,
         ]
       );

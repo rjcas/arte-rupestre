@@ -68,6 +68,19 @@ export default function DetalleLugar({ user, lugar, motivos }) {
             <strong>Operador/es:</strong> {lugar.operadores || '—'}
           </div>
         </div>
+        {lugar.latitud && lugar.longitud && (
+          <div style={{ marginTop: 14, paddingTop: 14, borderTop: '1px solid var(--linea)' }}>
+            <strong>Coordenadas:</strong> {lugar.latitud}, {lugar.longitud}{' '}
+            <a
+              href={`https://www.google.com/maps?q=${lugar.latitud},${lugar.longitud}`}
+              target="_blank"
+              rel="noreferrer"
+              style={{ marginLeft: 10, color: 'var(--ocre-dark)' }}
+            >
+              Ver en Google Maps ↗
+            </a>
+          </div>
+        )}
       </div>
 
       <div className="encabezado-pagina">

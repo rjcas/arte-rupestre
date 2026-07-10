@@ -169,6 +169,16 @@ scripts/             esquema SQL, migración, alta de editores
 
 - Exportar datos a Excel/CSV.
 - Búsqueda y filtros en el listado de motivos dentro de un lugar.
+- Agrupar marcadores cercanos en el mapa (clustering) si algún día se ve muy cargado.
+
+### Sobre el mapa
+
+En "Mapa" (menú lateral) se ven todos los lugares que tengan latitud y longitud cargadas.
+Para agregarlas, abrí un lugar → "Editar datos del lugar" → sección "Ubicación en el mapa".
+El tip más simple para conseguir las coordenadas: buscá el lugar en Google Maps, clic derecho
+sobre el punto exacto, y clic en el primer renglón (las coordenadas) para copiarlas — el primer
+número es la latitud y el segundo la longitud. Los lugares sin coordenadas simplemente no
+aparecen en el mapa, así que no hace falta completarlas todas de una.
 
 ### Sobre las imágenes
 
