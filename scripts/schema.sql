@@ -130,3 +130,17 @@ CREATE INDEX IF NOT EXISTS idx_conjunto_lugar ON conjunto_motivos(lugar_id);
 
 ALTER TABLE motivos ADD COLUMN IF NOT EXISTS legacy_id INTEGER UNIQUE;
 ALTER TABLE motivos ADD COLUMN IF NOT EXISTS notas_legado TEXT;
+
+-- Imágenes de piezas halladas, asociadas a un motivo
+CREATE TABLE IF NOT EXISTS motivo_imagenes (
+  id SERIAL PRIMARY KEY,
+  motivo_id INTEGER NOT NULL REFERENCES motivos(id) ON DELETE CASCADE,
+  nombre_archivo TEXT,
+  tipo_mime TEXT NOT NULL,
+  datos BYTEA NOT NULL,
+  tamanio_bytes INTEGER,
+  subido_por INTEGER REFERENCES usuarios(id),
+  creado_en TIMESTAMP DEFAULT now()
+);
+
+CREATE INDEX IF NOT EXISTS idx_imagenes_motivo ON motivo_imagenes(motivo_id);

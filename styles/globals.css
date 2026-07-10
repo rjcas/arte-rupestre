@@ -394,6 +394,144 @@ form textarea:focus {
   color: var(--piedra-700);
 }
 
+.galeria-imagenes {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.galeria-item {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--linea);
+  background: var(--piedra-100);
+}
+
+.galeria-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.galeria-borrar {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(28, 26, 24, 0.65);
+  color: white;
+  font-size: 1rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.galeria-borrar:hover {
+  background: var(--rojo-error);
+}
+
+.grid-motivos {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 14px;
+}
+
+.card-motivo {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  background: white;
+  border: 1px solid var(--linea);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.card-motivo:hover {
+  border-color: var(--ocre);
+  box-shadow: 0 6px 16px rgba(43, 38, 34, 0.08);
+  transform: translateY(-1px);
+}
+
+.card-motivo-miniatura {
+  aspect-ratio: 4/3;
+  background: var(--piedra-100);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--piedra-200);
+  overflow: hidden;
+}
+
+.card-motivo-miniatura img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-motivo-cuerpo {
+  padding: 12px 14px;
+}
+
+.card-motivo-cabecera {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.card-motivo-numero {
+  font-family: 'IBM Plex Serif', serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--piedra-900);
+}
+
+.card-motivo-tecnica {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 20px;
+  background: var(--piedra-100);
+  color: var(--piedra-700);
+}
+
+.card-motivo-tecnica.grabado {
+  background: #ece3d6;
+  color: #6b5228;
+}
+
+.card-motivo-tecnica.pintura {
+  background: #f3ded2;
+  color: var(--ocre-dark);
+}
+
+.card-motivo-tecnica.mixta {
+  background: #e3e6d9;
+  color: var(--verde-musgo);
+}
+
+.card-motivo-clase {
+  font-size: 0.82rem;
+  color: var(--piedra-800);
+}
+
+.card-motivo-tipo {
+  font-size: 0.78rem;
+  color: var(--piedra-700);
+}
+
 .login-shell {
   min-height: 100vh;
   display: flex;

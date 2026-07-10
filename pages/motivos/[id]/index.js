@@ -5,6 +5,7 @@ import { query } from '../../../lib/db';
 import { calcularTamanio } from '../../../lib/calculos';
 import Layout from '../../../components/Layout';
 import TabsMotivo from '../../../components/TabsMotivo';
+import GaleriaImagenes from '../../../components/GaleriaImagenes';
 import catalogos from '../../../lib/catalogos';
 
 export async function getServerSideProps({ req, params }) {
@@ -193,6 +194,8 @@ export default function DetalleMotivo({ user, motivo: motivoInicial }) {
           </button>
         </form>
       </div>
+
+      <GaleriaImagenes motivoId={motivo.id} />
     </Layout>
   );
 }

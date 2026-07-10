@@ -168,5 +168,14 @@ scripts/             esquema SQL, migración, alta de editores
 ## Posibles próximos pasos
 
 - Exportar datos a Excel/CSV.
-- Subida de imágenes/calcos por motivo.
-- Búsqueda y filtros en el listado de lugares y motivos.
+- Búsqueda y filtros en el listado de motivos dentro de un lugar.
+
+### Sobre las imágenes
+
+Las imágenes se guardan directamente en la base de datos de Neon (hasta 4 MB cada una, en
+JPG/PNG/WEBP/GIF). Es cómodo porque no depende de ningún servicio adicional, pero el plan
+gratuito de Neon tiene **0.5 GB de almacenamiento total** para todo el sistema (datos +
+imágenes). Para uso puntual —una foto por acá, un calco por allá— sobra de sobra. Si en algún
+momento se vuelve una práctica sistemática (foto de cada uno de los miles de motivos), avisame
+y migramos el almacenamiento de imágenes a un servicio pensado para eso (por ejemplo Vercel
+Blob o Cloudinary, ambos con capa gratuita), sin perder las que ya estén cargadas.
